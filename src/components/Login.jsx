@@ -46,26 +46,33 @@ const Login = () => {
     // };
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+       
         try {
+          console.log("entered in try")
           const response = await axios.post('http://localhost:3000/login', {
             email,
             password
           });
       
-          console.log('Axios response:', response);
+          console.log(' response:', response.data.message);
       
           if (response.data.success) {
-            // Successful login
-            alert('Login successful!');
+            
+            console.log(response.data.message)
             console.log('Login successful!');
+            const token = response.data.data;
+            localStorage.setItem('token',token);
+            alert(response.message)
             navigate('/adduser');
+            
           } else {
-            // Unsuccessful login
-            alert('Login failed. Invalid email or password.');
+            
+            alert(response.data.message);
             console.log('Login failed. Invalid email or password.');
           }
         } catch (error) {
+          
+          console.log("entered in catch")
           console.error('An error occurred during login:', error);
           alert('An error occurred. Please try again later.');
         }
