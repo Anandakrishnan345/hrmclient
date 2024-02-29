@@ -19,23 +19,25 @@ function Getuser() {
 
     return (
         <>
-         <div className="ctn">
+         <div className="ctn"style={{height:"100vh"}}>
         <div className="title">
             <h1>Users</h1>
         </div>
-        <div className="labels">
-        <h1>Name</h1>
-        <h1>Email</h1>
-        <h1 className="phone">Ph.Number</h1>
-        </div>
+        
             {data.length ? (
                 data.map((user) => (
-                    <div className="box" key={user.id}>
-                       
-                        <p>{user.name}</p>
-                        <p> {user.email}</p>
-                        <p> {user.phonenumber}</p>
+                   
+                    <div className="userctn" key={user.id} style={{border:"2px solid black" , display:"flex",flexDirection:"column",width:"300px",margin:"auto",gap:"5px",marginTop:"8px"}}>
+                        <div style={{ margin: "auto", borderBottom:"1px solid black",padding:"10px"}}>User-details</div>
+
+                    <div className="details" style={{margin:"auto",display:"flex",flexDirection:"column",justifyContent:"center",gap:"5px",padding:"10px"}}>
+                        <div style={{padding:"5px"}}>name: {user.name} </div>
+                        <div style={{padding:"5px"}}>email : {user.email}</div>
+                        <div style={{padding:"5px"}}>ph.number: {user.phonenumber}</div>
+        
                     </div>
+        
+                </div>
                 ))
             ) : (
                 <h1>Loading....</h1>

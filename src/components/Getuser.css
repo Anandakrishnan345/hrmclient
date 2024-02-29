@@ -10,14 +10,14 @@
     text-transform: uppercase;
     margin: auto;display: flex;justify-content: center;height: 50px;
    }
-   .box{
+   .inner-ctn{
        display: flex;
        justify-content: center;
        align-items: center;
        border: 2px solid goldenrod;
        justify-content: space-around;
    }
-   .box p{
+   .inner-ctn p{
         padding: 20px;
        /* width: 300px;  */
        border: 2px solid black;

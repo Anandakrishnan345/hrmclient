@@ -6,7 +6,7 @@ function Final(){
     return(
         <>
             <Land_nav/>
-            <div><button><Link to={"/login"}>Login</Link></button></div>
+            <div style={{display:"flex",justifyContent:"center"}}><button><Link to={"/login"}>Login</Link></button></div>
             <Land_footer/>
         </>
     )
