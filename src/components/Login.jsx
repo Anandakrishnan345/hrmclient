@@ -1,83 +1,46 @@
 import React, { useState } from 'react';
 import './Login.css'
-// import { BrowserRouter as Link,Route,Router } from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
 
 
-const Login = () => {
+function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const response = await axios.post('http://localhost:3000/login', {
-    //             email,
-    //             password
-    //         });
-
-    //         if (response.data.success) {
-    //             // Successful login
-    //             alert("Login successful!");
-    //             console.log("Login successful!");
-    //             navigate('/adduser');
-
-    //         } else {
-    //             // Unsuccessful login
-    //             alert("Login failed. Invalid email or password.");
-    //             console.log("Login failed. Invalid email or password.");
-    //         }
-    //     } 
-    //     // catch (error) {
-    //     //     console.error("An error occurred during login:", error.message);
-    //     //     alert("An error occurred. Please try again later.");
-    //     //     console.error("An error occurred during login:", error.message);
-    //     // }
-    //     catch (error) {
-    //         console.error("An error occurred during login:", error);
-    //         console.log("Axios response:", error.response);
-    //         alert("An error occurred. Please try again later.");}
-    // };
     const handleSubmit = async (e) => {
-        e.preventDefault();
-       
-        try {
-          console.log("entered in try")
+      e.preventDefault();
+      try {
           const response = await axios.post('http://localhost:3000/login', {
-            email,
-            password
+              email: email,
+              password: password
+          }, {
+              method: "POST",
+              headers: {
+                  'Content-Type': 'application/json'
+              }
           });
-      
-          console.log(' response:', response.data.message);
-      
+
+         
+
           if (response.data.success) {
-            
-            console.log(response.data.message)
-            console.log('Login successful!');
-            const token = response.data.data;
-            localStorage.setItem('token',token);
-            alert(response.message)
-            navigate('/adduser');
-            
+              const token = response.data.data;
+              localStorage.setItem('token', token);
+              navigate('/admin');
+              alert(response.data.message);
           } else {
-            
-            alert(response.data.message);
-            console.log('Login failed. Invalid email or password.');
+              alert(response.data.message);
           }
-        } catch (error) {
-          
-          console.log("entered in catch")
-          console.error('An error occurred during login:', error);
-          alert('An error occurred. Please try again later.');
-        }
-      };
-      
+      } catch (error) {
+          console.error('Login failed:', error);
+          alert('Login failed. Please try again later.');
+      }
+  };
     
    
 
@@ -88,7 +51,7 @@ const Login = () => {
             <form className='wrap-item' onSubmit={handleSubmit}>
             <h2 className='title'>Login</h2>
                 <label htmlFor="name">Enter your email</label>
-                <input type="text" placeholder="email" id="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="email" placeholder="email" id="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 <label htmlFor="password">Enter Your Password</label>
                 <input type="password" placeholder="Password" name='password' id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
@@ -96,6 +59,9 @@ const Login = () => {
                  
                  <button type='submit'>Login</button>
                 
+                </div>
+                <div>
+                  {/* doesn't have an account <Link to="/adduser">Signup</Link> */}
                 </div>
                 
             </form>
