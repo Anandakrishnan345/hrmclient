@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Adduser from'./components/Adduser';
 import AdminOnline from './components/AdminOnline';
 import Getuser from './components/Getuser';
+import ViewUser from './components/ViewUser';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/adduser" exact element={<Adduser/>} />
           <Route path="/admin" exact element ={<AdminOnline/>}/>
           <Route path="/getuser" exact element={<Getuser/>}/>
+          <Route path='/view' exact element={<ViewUser/>}/>
         </Routes>
       </div>
     </Router>

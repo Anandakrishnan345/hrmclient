@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import './Getuser.css';
 
@@ -27,13 +28,14 @@ function Getuser() {
             {data.length ? (
                 data.map((user) => (
                    
-                    <div className="userctn" key={user.id} style={{border:"2px solid black" , display:"flex",flexDirection:"column",width:"300px",margin:"auto",gap:"5px",marginTop:"8px"}}>
+                    <div className="userctn" key={user._id} style={{border:"2px solid black" , display:"flex",flexDirection:"column",width:"300px",margin:"auto",gap:"5px",marginTop:"8px"}}>
                         <div style={{ margin: "auto", borderBottom:"1px solid black",padding:"10px"}}>User-details</div>
 
                     <div className="details" style={{margin:"auto",display:"flex",flexDirection:"column",justifyContent:"center",gap:"5px",padding:"10px"}}>
                         <div style={{padding:"5px"}}>name: {user.name} </div>
                         <div style={{padding:"5px"}}>email : {user.email}</div>
                         <div style={{padding:"5px"}}>ph.number: {user.phonenumber}</div>
+                        <div style={{padding:"5px"}}><Link to={"/view"}><button>view user</button></Link></div>
         
                     </div>
         
