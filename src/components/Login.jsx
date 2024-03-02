@@ -11,10 +11,27 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    const [errors, setErrors] = useState({});// validation error
+ 
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+      const newErrors = {};
+      if (!email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        newErrors.email = 'Invalid email address';
+      }
+      if (!password.trim()) {
+        newErrors.password = 'Password is required';
+      } else if (password.length < 6) {
+        newErrors.password = 'Password must be at least 6 characters';
+        }
+      if (Object.keys(newErrors).length > 0) {
+          setErrors(newErrors);
+         return;
+        }
+
       try {
           const response = await axios.post('http://localhost:3000/login', {
               email: email,
@@ -52,9 +69,10 @@ function Login() {
             <h2 className='title'>Login</h2>
                 <label htmlFor="name">Enter your email</label>
                 <input type="email" placeholder="email" id="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <span className='error-message'>{errors.email}</span>
                 <label htmlFor="password">Enter Your Password</label>
                 <input type="password" placeholder="Password" name='password' id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-
+                <span className='error-message'>{errors.password}</span>
                 <div className='adduser'>
                  
                  <button type='submit'>Login</button>

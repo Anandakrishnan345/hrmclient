@@ -50,3 +50,9 @@
     padding: 10px 10px 2px 10px;
     border-bottom: 2px solid white;
  }
+ .error-message {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px; 
+  }
+  
