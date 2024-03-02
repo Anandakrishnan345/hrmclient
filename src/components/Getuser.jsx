@@ -20,7 +20,7 @@ function Getuser() {
 
     return (
         <>
-         <div className="ctn"style={{height:"100vh"}}>
+         <div className="ctn">
         <div className="title">
             <h1>Users</h1>
         </div>

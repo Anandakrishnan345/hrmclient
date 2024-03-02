@@ -166,7 +166,7 @@ function Adduser() {
         return 'Name is required';
       } else if (value.length < 3 || value.length > 30) {
         return 'Name should be between 3 and 30 characters';
-      } else if (!/^[A-Za-z\s]+$/.test(value)) {
+      } else if (!/^[A-Za-z]+$/.test(value)) {
         return 'Name should not contain numbers or special characters';
       }
       return '';
@@ -226,6 +226,8 @@ function Adduser() {
   };
 
   const handleAdduser = async (e) => {
+    try {
+      
     e.preventDefault();
 
     // Final validation before submitting the form
@@ -237,8 +239,8 @@ function Adduser() {
       setErrors(newErrors);
       return;
     }
-
-    try {
+   
+    
       // Make an API request to add the user
       const response = await axios.post(
         'http://localhost:3000/adduser',
@@ -256,16 +258,23 @@ function Adduser() {
           },
         }
       );
+      console.log("reached here...");
+      console.log("success",response.data.success);
 
       if (response.data.success) {
         alert(response.data.message);
         navigate('/getuser');
+        return;
       } else {
         alert(response.data.message);
+        return;
       }
+
+
+
     } catch (error) {
       console.error('Adding user failed:', error);
-      alert(error.response.data);
+      alert(error.response.data.message);
     }
   };
 

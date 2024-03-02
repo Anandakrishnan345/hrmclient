@@ -50,9 +50,13 @@ function Login() {
               localStorage.setItem('token', token);
               navigate('/admin');
               alert(response.data.message);
+              return;
           } else {
               alert(response.data.message);
+              return;
           }
+
+
       } catch (error) {
           console.error('Login failed:', error);
           alert(error.response.data.message);
