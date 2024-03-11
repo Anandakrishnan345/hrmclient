@@ -13,6 +13,8 @@ import Adduser from'./components/Adduser';
 import AdminOnline from './components/AdminOnline';
 import Getuser from './components/Getuser';
 import ViewUser from './components/ViewUser';
+import UpdateUser from './components/UpdateUser';
+import DeleteUser from './components/DeleteUser';
 
 
 
@@ -28,7 +30,9 @@ function App() {
           <Route path="/adduser" exact element={<Adduser/>} />
           <Route path="/admin" exact element ={<AdminOnline/>}/>
           <Route path="/getuser" exact element={<Getuser/>}/>
-          <Route path='/view' exact element={<ViewUser/>}/>
+          <Route path='/viewuser/:id' exact element={<ViewUser/>}/>
+          <Route path='/Update/:id' exact element={<UpdateUser/>}/>
+          <Route path='/delete/:id' exact element={<DeleteUser/>}/>
         </Routes>
       </div>
     </Router>

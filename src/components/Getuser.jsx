@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import axios from 'axios';
 import './Getuser.css';
 
 function Getuser() {
     const [data, setData] = useState([]);
+    const { id } = useParams(); 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/getuser');
+                console.log('Response:', response);
                 setData(response.data.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -35,7 +37,7 @@ function Getuser() {
                         <div style={{padding:"5px"}}>name: {user.name} </div>
                         <div style={{padding:"5px"}}>email : {user.email}</div>
                         <div style={{padding:"5px"}}>ph.number: {user.phonenumber}</div>
-                        <div style={{padding:"5px"}}><Link to={"/view"}><button>view user</button></Link></div>
+                        <div style={{padding:"5px"}}><Link to={`/viewuser/${user._id}`}><button>view user</button></Link></div>
         
                     </div>
         
