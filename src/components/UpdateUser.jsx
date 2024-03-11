@@ -262,7 +262,7 @@ function UpdateUser() {
       try {
         const response = await axios.get(`http://localhost:3000/viewuser/${id}`);
         console.log('Response:', response);
-        setData(response.data.data); // Update this line to use response.data.data
+        setData(response.data.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -375,7 +375,7 @@ function UpdateUser() {
 
       if (response.data.success) {
         alert(response.data.message);
-        navigate('/viewuser');
+        navigate('/getuser');
         return;
       } else {
         alert(response.data.message);

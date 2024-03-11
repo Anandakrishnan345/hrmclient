@@ -80,7 +80,7 @@ function ViewUser() {
         <>
             <div className="ctn">
                 <div className="title">
-                    <h1>Users</h1>
+                   <h1>Users</h1>
                 </div>
 
                 {Object.keys(data).length ? (  // Check if data is not an empty object
