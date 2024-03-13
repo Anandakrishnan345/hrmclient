@@ -144,7 +144,7 @@
 // };
 
 // export default Adduser;
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './Adduser.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -159,6 +159,15 @@ function Adduser() {
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    // Retrieve token from localStorage
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   const validators = {
     name: (value) => {
@@ -255,6 +264,7 @@ function Adduser() {
         {
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
         }
       );
