@@ -247,6 +247,7 @@ function UpdateUser() {
   const [Address, setAddress] = useState('');
   const [pincode, setPincode] = useState('');
   const navigate = useNavigate();
+  const [readOnly,setReadOnly]=useState(true);
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -331,14 +332,14 @@ function UpdateUser() {
     setErrors({ ...errors, [name]: error });
 
     // Update state directly with new values
-    name === 'name' && setName(value);
-    name === 'email' && setEmail(value);
-    name === 'password' && setPassword(value);
-    name === 'phonenumber' && setPhonenumber(value);
-    name === 'Address' && setAddress(value);
-    name === 'pincode' && setPincode(value);
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-
+const ToggleReadonly = ()=>{
+  setReadOnly(prevState => !prevState)
+}
   const handleUpdateuser = async (e) => {
     try {
       e.preventDefault();
@@ -402,6 +403,7 @@ function UpdateUser() {
           name='name'
           value={data.name}
           onChange={handleInputChange}
+          readOnly={readOnly}
           required
         />
         <span className='error-message'>{errors.name}</span>
@@ -412,6 +414,7 @@ function UpdateUser() {
           name='email'
           value={data.email}
           onChange={handleInputChange}
+          readOnly={readOnly}
           required
         />
         <span className='error-message'>{errors.email}</span>
@@ -422,6 +425,7 @@ function UpdateUser() {
           name='password'
           value={data.password}
           onChange={handleInputChange}
+          readOnly={readOnly}
           required
         />
         <span className='error-message'>{errors.password}</span>
@@ -432,6 +436,7 @@ function UpdateUser() {
           name='phonenumber'
           value={data.phonenumber}
           onChange={handleInputChange}
+          readOnly={readOnly}
           required
         />
         <span className='error-message'>{errors.phonenumber}</span>
@@ -441,6 +446,7 @@ function UpdateUser() {
           type='text'
           name='Address'
           value={data.Address}
+          readOnly={readOnly}
           onChange={handleInputChange}
           required
         />
@@ -452,11 +458,13 @@ function UpdateUser() {
           name='pincode'
           value={data.pincode}
           onChange={handleInputChange}
+          readOnly={readOnly}
           required
         />
         <span className='error-message'>{errors.pincode}</span>
 
         <div className='adduser'>
+        <button type='button' onClick={ToggleReadonly}>edit</button>
           <button type='submit'>Update</button>
         </div>
       </form>
