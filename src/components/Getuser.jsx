@@ -71,8 +71,9 @@
 
 // export default Getuser
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Swal from 'sweetalert2'
 import './Getuser.css';
 
 function Getuser() {
@@ -81,6 +82,7 @@ function Getuser() {
     const [token, setToken] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Retrieve token from localStorage
@@ -116,7 +118,28 @@ function Getuser() {
     }
 
     if (error) {
-        return <h1>Error: {error.message}</h1>;
+        Swal.fire({
+            icon: "error",
+            text: error.response.data.message,
+            showClass: {
+              popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `
+            },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `
+            }
+          }).then(()=>{navigate('/admin')})
+        return <>
+        <h1>Error: {error.response.data.message}</h1>
+        
+        </>
     }
 
     return (

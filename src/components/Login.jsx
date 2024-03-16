@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css'
 
 import { useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 import axios from 'axios';
 
 
@@ -48,18 +48,74 @@ function Login() {
           if (response.data.success) {
               const token = response.data.data;
               localStorage.setItem('token', token);
-              navigate('/admin');
-              alert(response.data.message);
+              // navigate('/admin');
+              // alert(response.data.message);
+
+              Swal.fire({
+                icon: "success",
+                text: response.data.message,
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              }).then(()=>{navigate('/admin')})
+
               return;
           } else {
-              alert(response.data.message);
+              // alert(response.data.message);
+              Swal.fire({
+                icon: "error",
+                text: response.data.message,
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              });
               return;
           }
 
 
       } catch (error) {
           console.error('Login failed:', error);
-          alert(error.response.data.message);
+          // alert(error.response.data.message);
+          Swal.fire({
+            icon: "error",
+            text: error.response.data.message,
+            showClass: {
+              popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `
+            },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `
+            }
+          });
       }
   };
     
