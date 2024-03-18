@@ -152,7 +152,7 @@ import axios from 'axios';
 function Adduser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [password, setPassword] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
   const [Address, setAddress] = useState('');
   const [pincode, setPincode] = useState('');
@@ -188,14 +188,14 @@ function Adduser() {
       }
       return '';
     },
-    password: (value) => {
-      if (!value.trim()) {
-        return 'Password is required';
-      } else if (value.length < 6) {
-        return 'Password must be at least 6 characters';
-      }
-      return '';
-    },
+    // password: (value) => {
+    //   if (!value.trim()) {
+    //     return 'Password is required';
+    //   } else if (value.length < 6) {
+    //     return 'Password must be at least 6 characters';
+    //   }
+    //   return '';
+    // },
     phonenumber: (value) => {
       if (!value.trim()) {
         return 'Phone number is required';
@@ -228,7 +228,7 @@ function Adduser() {
     // Directly update state based on the input name
     name === 'name' && setName(value);
     name === 'email' && setEmail(value);
-    name === 'password' && setPassword(value);
+    // name === 'password' && setPassword(value);
     name === 'phonenumber' && setPhonenumber(value);
     name === 'Address' && setAddress(value);
     name === 'pincode' && setPincode(value);
@@ -256,7 +256,7 @@ function Adduser() {
         {
           name,
           email,
-          password,
+          // password,
           phonenumber,
           Address,
           pincode,
@@ -314,16 +314,16 @@ function Adduser() {
         />
         <span className='error-message'>{errors.email}</span>
 
-        <label htmlFor='password'>Enter Your Password</label>
+        {/* <label htmlFor='password'>Enter Your Password</label>
         <input
-          type='password'
-          placeholder='Password'
-          name='password'
-          value={password}
-          onChange={handleInputChange}
-          required
-        />
-        <span className='error-message'>{errors.password}</span>
+          //type='password'
+          //placeholder='Password'
+          //name='password'
+          //value={password}
+          //onChange={handleInputChange}
+          //required
+        /> */}
+        {/* <span className='error-message'>{errors.password}</span> */}
 
         <label htmlFor='phonenumber'>Enter Your Phone Number</label>
         <input

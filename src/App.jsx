@@ -15,6 +15,7 @@ import Getuser from './components/Getuser';
 import ViewUser from './components/ViewUser';
 import UpdateUser from './components/UpdateUser';
 import DeleteUser from './components/DeleteUser';
+import ResetPassword from './components/ResetPassword';
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/viewuser/:id' exact element={<ViewUser/>}/>
           <Route path='/Update/:id' exact element={<UpdateUser/>}/>
           <Route path='/delete/:id' exact element={<DeleteUser/>}/>
+          <Route path='/reset-password' exact element={<ResetPassword/>}/>
         </Routes>
       </div>
     </Router>

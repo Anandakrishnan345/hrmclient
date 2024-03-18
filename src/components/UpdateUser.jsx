@@ -353,6 +353,13 @@ const ToggleReadonly = ()=>{
         setErrors(newErrors);
         return;
       }
+      console.log("name",data.name);
+      console.log("email",data.email);
+      console.log("password",data.password);
+      console.log("phonenumber",data.phonenumber);
+      console.log("Address",data.Address);
+      console.log("pincode",data.pincode);
+      
 
       // API request to update the user
       const response = await axios.put(
@@ -383,7 +390,7 @@ const ToggleReadonly = ()=>{
         return;
       }
     } catch (error) {
-      console.error('Updating user failed:', error);
+      console.log('Updating user failed:', error);
       alert(error.response.data.message);
     }
   };
