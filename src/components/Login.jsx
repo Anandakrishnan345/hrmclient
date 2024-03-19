@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css'
 
-import { useNavigate } from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 
@@ -139,7 +139,7 @@ function Login() {
                 
                 </div>
                 <div>
-                  {/* doesn't have an account <Link to="/adduser">Signup</Link> */}
+                  doesn't remember <Link to="/forgotpassword">Fotgot Password</Link>
                 </div>
                 
             </form>
