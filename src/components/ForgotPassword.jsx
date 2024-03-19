@@ -16,6 +16,7 @@ function ForgotPassword() {
       }
     } catch (error) {
       if (error.response) {
+        console.log(error.response)
         setMessage(error.response.data.message);
       } else {
         setMessage(error.message);

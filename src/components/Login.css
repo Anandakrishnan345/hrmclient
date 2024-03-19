@@ -49,3 +49,8 @@ input:hover{
     font-size: 0.8rem;
     margin-top: 5px; 
   }
+  .forgot-pasword{
+    color: rgb(240, 255, 250);
+    text-decoration: none;
+    
+  }

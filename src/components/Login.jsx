@@ -138,8 +138,9 @@ function Login() {
                  <button type='submit'>Login</button>
                 
                 </div>
-                <div>
-                  doesn't remember <Link to="/forgotpassword">Fotgot Password</Link>
+                <div style={{ color: 'white' }}>
+                  doesn't remember ? :<Link to="/forgotpassword" style={{ color: 'white' }}>Forgot Password</Link>
+
                 </div>
                 
             </form>
