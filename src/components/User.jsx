@@ -31,7 +31,7 @@ function User() {
     if (!user) {
         return <div>Loading...</div>;
     }
-
+    
     return (
         <div>
             <h2>User Details</h2>
@@ -39,6 +39,7 @@ function User() {
             <div>Email: {user.email}</div>
             {/* Add other user details here */}
             <div><button><Link to={`/Update/${user._id}`}>UpdateUser</Link></button></div>
+            <div><button><Link to={'changepassword'}>changepassword</Link></button></div>
         </div>
     );
 }

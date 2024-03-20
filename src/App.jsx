@@ -18,6 +18,7 @@ import DeleteUser from './components/DeleteUser';
 import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword';
 import User from './components/User';
+import ChangePassword from './components/ChangePassword';
 
 
 
@@ -32,7 +33,7 @@ function App() {
           <Route path="/" exact element={<Final />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/adduser" exact element={<Adduser/>} />
-          <Route path="/admin" exact element ={<AdminOnline/>}/>
+          <Route path="/admin/:id" exact element ={<AdminOnline/>}/>
           <Route path="/getuser" exact element={<Getuser/>}/>
           <Route path='/viewuser/:id' exact element={<ViewUser/>}/>
           <Route path='/Update/:id' exact element={<UpdateUser/>}/>
@@ -40,6 +41,7 @@ function App() {
           <Route path='/forgotpassword' exact element={<ForgotPassword/>}/>
           <Route path='/reset-password' exact element={<ResetPassword/>}/>
           <Route path='/employee/:id' exact element={<User/>}/>
+          <Route path='/employee/:id/changepassword' exact element={<ChangePassword/>}/>
           
         </Routes>
       </div>

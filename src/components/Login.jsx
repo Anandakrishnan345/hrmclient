@@ -446,7 +446,7 @@ function Login() {
                 const userType = userTypeMap[user.user_type];
 
                 if (userType === 'admin') {
-                    navigate('/admin');
+                    navigate(`/admin/${user._id}`);
                 } else if (userType === 'employee') {
                     navigate(`/employee/${user._id}`);
                 } else {
