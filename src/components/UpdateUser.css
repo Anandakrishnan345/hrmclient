@@ -1,0 +1,47 @@
+
+
+.update-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+
+    border: 2px solid black;
+    gap: 10px;
+    margin: auto;
+    border-radius: 15px;
+    margin-top: 100px;
+}
+
+.update-button {
+    border-radius: 10px;
+  
+}
+
+.update-input {
+    padding: 10px;
+    max-width: 48%;
+}
+
+.heading {
+    padding: 10px;
+}
+
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+    .update-user {
+        max-width: 90%;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    .update-input {
+        padding: 10px;
+        max-width: 75%;
+    }
+    
+    .update-button {
+        max-width: 90%;
+    }
+}

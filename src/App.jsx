@@ -17,6 +17,8 @@ import UpdateUser from './components/UpdateUser';
 import DeleteUser from './components/DeleteUser';
 import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword';
+import User from './components/User';
+
 
 
 
@@ -37,6 +39,8 @@ function App() {
           <Route path='/delete/:id' exact element={<DeleteUser/>}/>
           <Route path='/forgotpassword' exact element={<ForgotPassword/>}/>
           <Route path='/reset-password' exact element={<ResetPassword/>}/>
+          <Route path='/employee/:id' exact element={<User/>}/>
+          
         </Routes>
       </div>
     </Router>

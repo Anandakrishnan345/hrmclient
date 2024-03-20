@@ -148,7 +148,7 @@ import React, { useState,useEffect } from 'react';
 import './Adduser.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+// import { validateEmail, validatePassword, validatePhoneNumber, validateAddress, validatePincode } from './ValidationRules';
 function Adduser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

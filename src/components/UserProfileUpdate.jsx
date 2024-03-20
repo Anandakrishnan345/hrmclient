@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams,useNavigate } from 'react-router-dom';
 import './UpdateUser.css' ;
 import Swal from 'sweetalert2';
 
-function ViewAndUpdateUser() {
+function UserProfileUpdate() {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
@@ -49,16 +48,13 @@ function ViewAndUpdateUser() {
         try {
             const response = await axios.put(`http://localhost:3000/update/${id}`, updatedUser);
             console.log('User details updated successfully:', response.data.message);
-            if(response.data.data.user_type==='65eecbcb18357aefe2c8f15c'){
-                navigate('/login')
-            }
+
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text:  response.data.message,
                
-            })
-            
+            }).then(()=>{navigate('/admin')})
             // Optionally, you can update the user state with the updated data
             setUser(response.data.data);
         } catch (error) {
@@ -94,4 +90,4 @@ function ViewAndUpdateUser() {
     );
 }
 
-export default ViewAndUpdateUser;
+export default UserProfileUpdate;
