@@ -452,11 +452,12 @@ function Login() {
                     navigate(`/admin/${user._id}`);
 
                 } else if (userType === 'employee') {
-                    if (response.data.data.user.password_token===null) {
-                        navigate(`/employee/${user._id}`);
-                    } else {
-                        
+                    if (!response.data.data.lastLogin) {
                         navigate(`/employee/${user._id}/changepassword`);
+                    } else {
+                        navigate(`/employee/${user._id}`);
+                        
+                        
                     }
                 }
                 // else if (userType === 'employee'&& response.data.data.user.password_token===null) {
