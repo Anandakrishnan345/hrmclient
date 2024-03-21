@@ -145,7 +145,7 @@
 
 // export default Adduser;
 import React, { useState,useEffect } from 'react';
-import './Adduser.css';
+import './Newadduser.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import { validateEmail, validatePassword, validatePhoneNumber, validateAddress, validatePincode } from './ValidationRules';
@@ -289,77 +289,132 @@ function Adduser() {
   };
 
   return (
-    <div className='wrapper_add'>
-      <h2 className='titleuser'>Adduser</h2>
-      <form className='wrap-item' onSubmit={handleAdduser}>
-        <label htmlFor='name'>Enter your Name</label>
+    // <div className='wrapper_add'>
+    //   <h2 className='titleuser'>Adduser</h2>
+    //   <form className='wrap-item' onSubmit={handleAdduser}>
+    //     <label htmlFor='name'>Enter your Name</label>
+    //     <input
+    //       type='text'
+    //       placeholder='Enter your name'
+    //       name='name'
+    //       value={name}
+    //       onChange={handleInputChange}
+    //       required
+    //     />
+    //     <span className='error-message'>{errors.name}</span>
+
+    //     <label htmlFor='email'>Enter your email</label>
+    //     <input
+    //       type='text'
+    //       placeholder='email'
+    //       name='email'
+    //       value={email}
+    //       onChange={handleInputChange}
+    //       required
+    //     />
+    //     <span className='error-message'>{errors.email}</span>
+
+        
+
+    //     <label htmlFor='phonenumber'>Enter Your Phone Number</label>
+    //     <input
+    //       type='text'
+    //       placeholder='Enter Your Phone Number'
+    //       name='phonenumber'
+    //       value={phonenumber}
+    //       onChange={handleInputChange}
+    //       required
+    //     />
+    //     <span className='error-message'>{errors.phonenumber}</span>
+
+    //     <label htmlFor='address'>Enter Your Address</label>
+    //     <input
+    //       type='address'
+    //       placeholder='Enter Your Address'
+    //       name='Address'
+    //       value={Address}
+    //       onChange={handleInputChange}
+    //       required
+    //     />
+    //     <span className='error-message'>{errors.Address}</span>
+
+    //     <label htmlFor='pincode'>Enter Your Pincode</label>
+    //     <input
+    //       type='pincode'
+    //       placeholder='Enter Your pincode'
+    //       name='pincode'
+    //       value={pincode}
+    //       onChange={handleInputChange}
+    //       required
+    //     />
+    //     <span className='error-message'>{errors.pincode}</span>
+
+    //     <div className='adduser'>
+    //       <button type='submit'>Adduser</button>
+    //     </div>
+    //   </form>
+    // </div>
+    <div className="wrapper_add">
+      
+      <form className="form" onSubmit={handleAdduser}>
+      <h2 className="titleuser">Add User</h2>
+        <label htmlFor="name">Enter your Name</label>
         <input
-          type='text'
-          placeholder='Enter your name'
-          name='name'
+          type="text"
+          placeholder="Enter your name"
+          name="name"
           value={name}
           onChange={handleInputChange}
           required
         />
-        <span className='error-message'>{errors.name}</span>
+        <span className="error-message">{errors.name}</span>
 
-        <label htmlFor='email'>Enter your email</label>
+        <label htmlFor="email">Enter your email</label>
         <input
-          type='text'
-          placeholder='email'
-          name='email'
+          type="email"
+          placeholder="Email"
+          name="email"
           value={email}
           onChange={handleInputChange}
           required
         />
-        <span className='error-message'>{errors.email}</span>
+        <span className="error-message">{errors.email}</span>
 
-        {/* <label htmlFor='password'>Enter Your Password</label>
+        <label htmlFor="phonenumber">Enter Your Phone Number</label>
         <input
-          //type='password'
-          //placeholder='Password'
-          //name='password'
-          //value={password}
-          //onChange={handleInputChange}
-          //required
-        /> */}
-        {/* <span className='error-message'>{errors.password}</span> */}
-
-        <label htmlFor='phonenumber'>Enter Your Phone Number</label>
-        <input
-          type='text'
-          placeholder='Enter Your Phone Number'
-          name='phonenumber'
+          type="text"
+          placeholder="Enter Your Phone Number"
+          name="phonenumber"
           value={phonenumber}
           onChange={handleInputChange}
           required
         />
-        <span className='error-message'>{errors.phonenumber}</span>
+        <span className="error-message">{errors.phonenumber}</span>
 
-        <label htmlFor='address'>Enter Your Address</label>
+        <label htmlFor="address">Enter Your Address</label>
         <input
-          type='address'
-          placeholder='Enter Your Address'
-          name='Address'
+          type="text"
+          placeholder="Enter Your Address"
+          name="Address"
           value={Address}
           onChange={handleInputChange}
           required
         />
-        <span className='error-message'>{errors.Address}</span>
+        <span className="error-message">{errors.Address}</span>
 
-        <label htmlFor='pincode'>Enter Your Pincode</label>
+        <label htmlFor="pincode">Enter Your Pincode</label>
         <input
-          type='pincode'
-          placeholder='Enter Your pincode'
-          name='pincode'
+          type="text"
+          placeholder="Enter Your pincode"
+          name="pincode"
           value={pincode}
           onChange={handleInputChange}
           required
         />
-        <span className='error-message'>{errors.pincode}</span>
+        <span className="error-message">{errors.pincode}</span>
 
-        <div className='adduser'>
-          <button type='submit'>Adduser</button>
+        <div className="adduser">
+          <button className="adduser-button" type="submit">Add User</button>
         </div>
       </form>
     </div>

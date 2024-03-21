@@ -426,9 +426,12 @@ function Login() {
                 password: password,
                 
             });
+            console.log('34response',response.data.message)
+           
             
 
             if (response.data.success) {
+                console.log('successresponse',response)
                 const { access_token, user } = response.data.data;
                 localStorage.setItem('token', access_token);
 
@@ -447,9 +450,24 @@ function Login() {
 
                 if (userType === 'admin') {
                     navigate(`/admin/${user._id}`);
+
                 } else if (userType === 'employee') {
-                    navigate(`/employee/${user._id}`);
-                } else {
+                    if (response.data.data.user.password_token===null) {
+                        navigate(`/employee/${user._id}`);
+                    } else {
+                        
+                        navigate(`/employee/${user._id}/changepassword`);
+                    }
+                }
+                // else if (userType === 'employee'&& response.data.data.user.password_token===null) {
+                //     navigate(`/employee/${user._id}`);
+                //  }
+                //  else if(userType==='employee'&&
+                // response.data.data.requiresPasswordChange){
+                //     navigate(`/employee/${user._id}/changepassword`)
+
+                // }
+                 else {
                     console.error('Unknown user role:', userType);
                 }
 
@@ -457,14 +475,19 @@ function Login() {
 
 
             } else {
+               
+                
                 Swal.fire({
+                   
                     icon: 'error',
                     text: response.data.message
                 });
             }
         } catch (error) {
-            console.error('Login failed:', error.response.data);
+           console.log('catch error',error)
+            
             Swal.fire({
+                
                 icon: 'error',
                 text: error.response.data.message
             });
