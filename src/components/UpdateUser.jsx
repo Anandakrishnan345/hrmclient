@@ -102,6 +102,7 @@ import { jwtDecode } from 'jwt-decode';
  // Import jwtDecode
 import './UpdateUser.css';
 import Swal from 'sweetalert2';
+import checkToken from './CheckToken';
 
 function ViewAndUpdateUser() {
     const { id } = useParams();
@@ -114,6 +115,7 @@ function ViewAndUpdateUser() {
         Address: '',
         pincode: ''
     });
+    checkToken();
 
     // Function to fetch user details
     useEffect(() => {
@@ -154,24 +156,33 @@ function ViewAndUpdateUser() {
             const userType = decodedToken.user_type;
             console.log('userType',userType);
 
-            // Navigate based on user_type
-            if (userType === 'employee') { // Employee
-                navigate(`/employee/${user._id}`);
-            } else if(userType === 'admin'){
-                navigate('/admin')
-            }
-
-            // Show success alert
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text:  response.data.message,
-            });
+            }).then(()=>{
+                     // Navigate based on user_type
+            if (userType === 'employee') { // Employee
+                navigate(`/employee/${user._id}`);
+            } else if(userType === 'admin'){
+                navigate(`/admin/${user._id}`);
+            }
+            })
+
+           
+
+            
+          
 
             // Optionally, you can update the user state with the updated data
             setUser(response.data.data);
         } catch (error) {
-            console.error('Failed to update user details:', error.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'oops',
+                text:  error.response.data.message,
+            })
+            console.error('Failed to update user details:', error.response);
         }
     };
 

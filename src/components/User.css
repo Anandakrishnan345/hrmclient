@@ -7,14 +7,25 @@
     margin: 0 auto; /* Center align */
     width: 80%; /* Adjust width as needed */
     text-align: center; /* Center align text content */
+    
 }
 
 /* User info styles */
 .user-info {
     display: flex; /* Ensure contents are centered */
     text-align: left; /* Align contents to the left within the centered container */
-    background-color: blue;
     
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.user-info-name{
+color: rgb(0, 136, 255);
+font-size: large;
+}
+.user-info-email{
+    color: rgb(0, 136, 255);
 }
 .user-info-navbar {
     background-color: rgba(217, 234, 243, 0.8);  /* Navbar background color */
@@ -22,6 +33,7 @@
     padding: 10px; /* Padding for the navbar */
     display: flex; /* Flexbox layout */
     justify-content: space-between; /* Align items with space between them */
+    animation: slideIn 0.59s ease forwards;
 }
 /* Button styles */
 .button {
@@ -47,3 +59,18 @@
         padding: 8px 16px;
     }
 }
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .user-info-navbar {
+    animation: slideIn 0.59s ease forwards;
+  }
+  

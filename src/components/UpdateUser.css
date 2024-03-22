@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     max-width: 50%;
-
+    animation: slideIn 0.59s ease forwards;
     border: 2px solid black;
     gap: 10px;
     margin: auto;
@@ -45,3 +45,18 @@
         max-width: 90%;
     }
 }
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .update-user{
+    animation: slideIn 0.59s ease forwards;
+  }
+  

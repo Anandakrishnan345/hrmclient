@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams,Link } from 'react-router-dom';
-import './User.css'
+import './User.css';
+import Logout from './Logout';
 
 function User() {
     const [user, setUser] = useState(null);
@@ -35,14 +36,16 @@ function User() {
     
     return (
         <nav className="user-info-navbar">
+            <Logout/>
             <div className="user-info">
-                <div>Name: {user.name}</div>
-                <div>Email: {user.email}</div>
+                <div className='user-info-name'>Wlecome: {user.name}</div>
+                <div className='user-info-email'>Email: {user.email}</div>
                 {/* Add other user details here */}
             </div>
             <div className="user-actions">
                 <button className="button"><Link to={`/Update/${user._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>UpdateUser</Link></button>
                 <button className="button"><Link to={'changepassword'} style={{ textDecoration: 'none', color: 'inherit' }}>Change Password</Link></button>
+                
             </div>
         </nav>
     );

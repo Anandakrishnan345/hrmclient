@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 // import Final from './components/Final'
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom'
 // import Adduser from './components/Adduser'
@@ -19,21 +19,23 @@ import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword';
 import User from './components/User';
 import ChangePassword from './components/ChangePassword';
-
-
-
+import NotFound from './components/Notfound';
 
 
 
 function App() {
+  
+
   return (
     <Router>
-      <div>   
+      <div>
         <Routes>
           <Route path="/" exact element={<Final />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/adduser" exact element={<Adduser/>} />
-          <Route path="/admin/:id" exact element ={<AdminOnline/>}/>
+         
+        
+          <Route path='/admin/:id' exact element={<AdminOnline/>}/>
           <Route path="/getuser" exact element={<Getuser/>}/>
           <Route path='/viewuser/:id' exact element={<ViewUser/>}/>
           <Route path='/Update/:id' exact element={<UpdateUser/>}/>
@@ -42,7 +44,7 @@ function App() {
           <Route path='/reset-password' exact element={<ResetPassword/>}/>
           <Route path='/employee/:id' exact element={<User/>}/>
           <Route path='/employee/:id/changepassword' exact element={<ChangePassword/>}/>
-          
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
@@ -50,3 +52,5 @@ function App() {
 }
 
 export default App;
+
+

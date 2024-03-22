@@ -21,11 +21,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode'; // Import jwtDecode
 import Adminimage from './images/man.png';
-import './Adminonline.css'
+import './Adminonline.css';
+import Logout from './Logout';
+import checkToken from './CheckToken';
 
 function AdminOnline() {
   const [userId, setUserId] = useState(null);
   const [user, setUser] = useState(null);
+  checkToken();
 
   useEffect(() => {
     // Retrieve token from localStorage
@@ -74,6 +77,7 @@ function AdminOnline() {
         )}
         <Link to="/adduser"><button className='admin-button'>Add User</button></Link>
         <Link to="/getuser"><button className='admin-button'>Get User</button></Link>
+        <Logout/>
       </div>
     </>
   );
