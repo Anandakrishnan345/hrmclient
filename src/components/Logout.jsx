@@ -1,6 +1,7 @@
 // Logout.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -10,7 +11,14 @@ const Logout = () => {
     localStorage.removeItem('token');
 
     // Navigate user to the login page
+
     navigate('/login');
+    Swal.fire({
+        icon: 'success',
+        title: 'Logout Successful',
+        text: 'Redirecting...'
+    })
+
   };
 
   return (
